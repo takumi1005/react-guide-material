@@ -1,17 +1,17 @@
 // 三項演算子（ ? : ）
 
-const a = true;
-let resultA;
+const a = false;
+let resultA = a ? 10 : -10;
 
-if(a) {
-  resultA = "true";
+if (a) {
+	resultA = "true";
 } else {
-  resultA = "false";
+	resultA = "false";
 }
 console.log(resultA);
 
-// function getResult() {
-//   return a ? "true" : "false";
-// }
+function getResult() {
+	return a ? "true" : "false";
+}
 
-// console.log(getResult());
+console.log(getResult());
