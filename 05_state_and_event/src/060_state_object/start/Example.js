@@ -5,7 +5,9 @@ const Example = () => {
 	const [person, setPerson] = useState(personObj);
 
 	const changeName = (e) => {
-		setPerson({ name: e.target.value, age: person.age });
+		// person.name = e.target.value; // これはダメだよ
+		// スプレッド演算子で一回展開してから変えたい値だけ変更する
+		setPerson({ ...person, name: e.target.value });
 	};
 	const changeAge = (e) => {
 		setPerson({ name: person.name, age: e.target.value });
