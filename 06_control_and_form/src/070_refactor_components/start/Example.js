@@ -1,34 +1,23 @@
 import { useState } from "react";
+import AnimalFilter from "./components/AnimalFilter";
+import AnimalList from "./components/AnimalList";
 
 const Example = () => {
-  const animals = ["Dog", "Cat", "Rat"];
+	const animals = ["Dog", "Cat", "Rat"];
 
-  const [filterVal, setFilterVal] = useState("");
+	const [filterVal, setFilterVal] = useState("");
 
-  return (
-    <>
-      <input
-        type="text"
-        value={filterVal}
-        onChange={(e) => setFilterVal(e.target.value)}
-      />
-      <ul>
-        {animals
-          .filter((animal) => {
-            const isMatch = animal.indexOf(filterVal) !== -1;
-            return isMatch;
-          })
-          .map((animal) => {
-            return (
-              <li key={animal}>
-                {animal}
-                {animal === "Dog" && "★"}
-              </li>
-            );
-          })}
-      </ul>
-    </>
-  );
+	const filterdAnimals = animals.filter((animal) => {
+		const isMatch = animal.indexOf(filterVal) !== -1;
+		return isMatch;
+	});
+
+	return (
+		<>
+			<AnimalFilter filterState={[filterVal, setFilterVal]} />
+			<AnimalList animals={filterdAnimals} />
+		</>
+	);
 };
 
 export default Example;
